@@ -1,42 +1,107 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
-export default function App() {
-  const [codigo, onChangeText] = React.useState("");
+import React, { useState } from 'react';
+import { StyleSheet, Text } from 'react-native';
+import { Container, Stack, Row, Col, Table } from 'react-bootstrap';
 
-  const JWT = 'eyJraWQiOiJlaHItZG9jIiwiYWxnIjoiUlMyNTYifQ.eyJpYXQiOjE2Mzc2MzY0MDAsImV4cCI6NDc5MTMyMjc5OSwibmJmIjoxNjM3NzEwNzA5LCJpc3MiOiJFSFIgU0VSVklDRVMgQkZGIiwic3ViIjoiQ09XN1BSWDVDTjJCWFlINCIsImNvZGlnbyI6IkNPVzdQUlg1Q04yQlhZSDQiLCJwYWNpZW50ZSI6eyJjcGYiOiI3OTcwNjAyOTU5MSIsIm5vbWUiOiJUSElBR08gREUgT0xJVkVJUkEgTElNQSIsIm5hc2NpbWVudG8iOiIxOTc5LTEwLTA0In0sInZhY2luYXMiOlt7ImRhdGEiOiIyMDIxLTA5LTAxIiwibm9tZSI6IkNPVklELTE5IEFTVFJBWkVORUNBL0ZJT0NSVVogLSBDT1ZJU0hJRUxEIiwiZG9zZSI6IjIvMiJ9LHsiZGF0YSI6IjIwMjEtMDYtMTIiLCJub21lIjoiQ09WSUQtMTkgQVNUUkFaRU5FQ0EvRklPQ1JVWiAtIENPVklTSElFTEQiLCJkb3NlIjoiMS8yIn1dLCJfVE9LRU5fVFlQRV9DTEFJTV8iOiJDZXJ0VmFjQ292aWQxOSJ9.hiIHHc4dygJ6OYgnbb_kzIJjqRXRym7XzXxC9VBM68UEMZTWQR1NijYJrJd1FvCievokaMpXACf_mrnhVm2o0BRzCpIes-onQZrn_zy_c7xktqh4Hgd3BBZGh1uhvipMkP4OqQ5KtAT07QRJZInXXI_-VllbpUBEAkPo6jXTPtqHPwFbQ_FKNAtrfqMDiNRjoVodXAw6Bqo1r_Po-_BHp7xAYQKU76IrpTxPoCXOsWnQeprSrJUgeuFSnntKtV8TAuhdBt1EnSsxRhH9LESGfQkAKgSes5C4GsKFyUoFPSPXj66uDZML-rrL1VoV2B04aAfFJdKWd3hBS63U35BHOw';
-  var b64_header, b64_payload, b64_signature = JWT.split('.');
-  var json = btoa(b64_header);
-  const [paciente, pacientechange] = React.useState(json);
+export default function App() {
+  const titulo = useState("O que significa “CONTATO PRÓXIMO”?");
+
 
   return (
-    <View style={styles.container}>
-      <Text>
-        Código inserido: {codigo}
-        Paciente carregado: {json}
-      </Text>
-      <Button
-        
-        title="Verificar"
-        color="blue"
-        accessibilityLabel="Verificar se seu cadastro foi feito"
-      />
-      <Text>
+    <Container fluid>
+      <Row className="justify-content-md-center">
+        <Col>
+          <Text style={Título.titleText}>
+            {titulo}
+            {"\n"}
 
-      </Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+          </Text>
+
+
+          <Text>
+            Para fins de vigilância, rastreamento, isolamento, monitoramento de contatos e {"\n"}quarentena, deve-se considerar o contato próximo a pessoa que:
+
+          </Text>
+          <Stack gap={3}>
+            <div className="bg-light border">● Esteve a menos de um metro de distância, por um período mínimo de 15 minutos, com um caso confirmado sem ambos utilizarem máscara facial ou utilizarem de forma incorreta.</div>
+            <div className="bg-light border">● Teve um contato físico direto (p. ex.: apertando as mãos) com um caso confirmado</div>
+            <div className="bg-light border">● É profissional de saúde que prestou assistência em saúde ao caso de covid-19 sem utilizar equipamentos de proteção individual (EPI), conforme preconizado, ou com EPI danificados</div>
+            <div className="bg-light border">● Seja contato domiciliar ou residente na mesma casa/ambiente (dormitórios, creche, alojamento, dentre outros) de um caso confirmado.</div>
+          </Stack>
+          <Text style={Título.titleText}>{"\n"}Critérios de ISOLAMENTO</Text>
+
+          <StatusBar style="auto" />
+        </Col>
+      </Row>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Pessoa exposta/Contato </th>
+            <th>Condição</th>
+            <th>Isolamento</th>
+            <th>Teste</th>
+            <th>Negativo</th>
+            <th>Positivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Assintomático</td>
+            <td>Vacinação completa</td>
+            <td> NÃO</td>
+            <td>5º Dia</td>
+            <td>-------</td>
+            <td>Critério de paciente POSITIVO</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Vacinação incompleta</td>
+            <td>SIM(5º Dia)</td>
+            <td>5º Dia</td>
+            <td>ALTA</td>
+            <td>Completar 10 dias</td>
+          </tr>
+          <tr>
+            <td>Sintomático</td>
+            <td>Teste(+)</td>
+            <td>Critério de paciente POSITIVO</td>
+            <td>-------</td>
+            <td>-------</td>
+            <td>---------------------</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Teste(-)</td>
+            <td>Afastar por 5 dias</td>
+            <td>5º Dia</td>
+            <td>ALTA</td>
+            <td>Completar 10 dias</td>
+          </tr>
+        </tbody>
+      </Table>
+    </Container>
+
+  )
+
+
+
 }
 
 
-
+const Título = StyleSheet.create({
+  baseText: {
+    fontFamily: "Cochin"
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: "bold"
+  }
+});
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
   },
   input: {
     borderWidth: 1,
