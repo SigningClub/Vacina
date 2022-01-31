@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text } from 'react-native';
-import { Container, Stack, Row, Col, Table } from 'react-bootstrap';
+import { Container, Stack, Row, Col, Table, Alert } from 'react-bootstrap';
 
 export default function App() {
   const titulo = useState("O que significa “CONTATO PRÓXIMO”?");
@@ -11,24 +11,24 @@ export default function App() {
     <Container fluid>
       <Row className="justify-content-md-center">
         <Col>
-          <Text style={Título.titleText}>
-            {titulo}
+          <Alert variant="secondary">
+            <Alert.Heading>{titulo}</Alert.Heading>
             {"\n"}
 
-          </Text>
+          
 
 
-          <Text>
+          
             Para fins de vigilância, rastreamento, isolamento, monitoramento de contatos e {"\n"}quarentena, deve-se considerar o contato próximo a pessoa que:
 
-          </Text>
+          </Alert>
           <Stack gap={3}>
             <div className="bg-light border">● Esteve a menos de um metro de distância, por um período mínimo de 15 minutos, com um caso confirmado sem ambos utilizarem máscara facial ou utilizarem de forma incorreta.</div>
             <div className="bg-light border">● Teve um contato físico direto (p. ex.: apertando as mãos) com um caso confirmado</div>
             <div className="bg-light border">● É profissional de saúde que prestou assistência em saúde ao caso de covid-19 sem utilizar equipamentos de proteção individual (EPI), conforme preconizado, ou com EPI danificados</div>
             <div className="bg-light border">● Seja contato domiciliar ou residente na mesma casa/ambiente (dormitórios, creche, alojamento, dentre outros) de um caso confirmado.</div>
           </Stack>
-          <Text style={Título.titleText}>{"\n"}Critérios de ISOLAMENTO</Text>
+          <Alert><Alert.Heading>{"\n"}Critérios de ISOLAMENTO</Alert.Heading></Alert>
 
           <StatusBar style="auto" />
         </Col>
